@@ -10,9 +10,9 @@ public class Login {
 	@NotEmpty(message = " UserId is required")
 	private String userId;
 	
-	@JsonProperty(value = "pwdd", required = true)
-	@NotEmpty(message = "Pwd is required")
-	private String pwdd;
+	@JsonProperty(value = "pswd", required = true)
+	@NotEmpty(message = "pswd is required")
+	private String pswd;
 
 	
 	public String getUserId() {
@@ -26,20 +26,20 @@ public class Login {
 	/**
 	 * @return the pwdd
 	 */
-	public String getPwdd() {
-		return pwdd;
+	public String getPswd() {
+		return pswd;
 	}
 
 	/**
 	 * @param pwdd the pwdd to set
 	 */
-	public void setPwdd(String pwdd) {
-		this.pwdd = pwdd;
+	public void setPswd(String pswd) {
+		this.pswd = pswd;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Login [userId=%s, pwdd=%s]", userId, pwdd);
+		return String.format("Login [userId=%s, pwdd=%s]", userId, pswd);
 	}
 
 	

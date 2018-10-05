@@ -47,8 +47,8 @@ public class UserProfile {
 	@NotEmpty(message = "Security Answer1 is required")
 	private String SQA1;
 
-	@JsonProperty(value = "sqa2", required = true)
-	@NotEmpty(message = "Security Answer2 is required")
+//	@JsonProperty(value = "sqa2", required = true)
+//	@NotEmpty(message = "Security Answer2 is required")
 	private String SQA2;
 
 	@JsonProperty(value = "sqa3", required = true)

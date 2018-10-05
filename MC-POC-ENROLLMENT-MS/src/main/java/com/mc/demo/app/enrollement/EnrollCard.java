@@ -1,5 +1,7 @@
 package com.mc.demo.app.enrollement;
 
+import java.sql.Date;
+
 import javax.validation.constraints.NotEmpty;
 
 public class EnrollCard {
@@ -10,10 +12,27 @@ public class EnrollCard {
 	@NotEmpty(message = "SSN is required")
 	private String ssn;
 
-	@NotEmpty(message = "DOB is required")
-	private String dob;
+	//@NotEmpty(message = "DOB is required")
+	private String dob;   /**	"2002-10-02" */
+
+
+	
 
 	private String zipcode;
+
+	/**
+	 * @return the dob
+	 */
+	public String getDob() {
+		return dob;
+	}
+
+	/**
+	 * @param dob the dob to set
+	 */
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
 
 	public String getCardnumber() {
 		return cardnumber;
@@ -31,13 +50,7 @@ public class EnrollCard {
 		this.ssn = ssn;
 	}
 
-	public String getDob() {
-		return dob;
-	}
-
-	public void setDob(String dob) {
-		this.dob = dob;
-	}
+	
 
 	public String getZipcode() {
 		return zipcode;

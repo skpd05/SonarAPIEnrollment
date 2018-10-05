@@ -15,7 +15,7 @@ public class CardEnrolled {
 	
 	private String message;
 	
-	private boolean isEnrolledAlready;
+	private boolean isEnrolledAlready = true;
 	
 	private String userid;
 

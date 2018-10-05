@@ -6,6 +6,7 @@ public class LoginResponse{
 	private String cardnumber;
 	private String custid;
 	private String userid;
+	private String ssn;
 	/**
 	 * @return the message
 	 */
@@ -65,6 +66,12 @@ public class LoginResponse{
 	 */
 	public void setUserid(String userid) {
 		this.userid = userid;
+	}
+	public String getSsn() {
+		return ssn;
+	}
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
 	}
 	
 	

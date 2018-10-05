@@ -54,7 +54,7 @@ public class EnrollServiceImpl implements EnrollService {
 	@Override
 	public CardEnrolled validateCard(EnrollCard enrollCard) {
 		String cardNumber = enrollCard.getCardnumber();
-		Account acc = accountRepo.findByAccountnumber(enrollCard.getCardnumber());
+		Account acc = accountRepo.findByAccountnumber(cardNumber);
 		if (acc == null) {
 			throw new ObjectNotFoundException("No Cardfound");
 		}
@@ -112,6 +112,7 @@ public class EnrollServiceImpl implements EnrollService {
 			userPro.setUpdated_at(java.sql.Timestamp.valueOf(LocalDateTime.now()));
 			userRepo.save(userPro);
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new ApplicationException("User profile creation failed");
 		}
 		return true;
@@ -131,7 +132,7 @@ public class EnrollServiceImpl implements EnrollService {
 		Userprofile user = null;
 		LoginResponse loginResponse = new LoginResponse();
 		loginResponse.setAuthenticated(false);
-		
+		loginResponse.setMessage("User Authentication failed");
 		String uid = login.getUserId();
 		user = userRepo.findUserByUserid(uid);
 		if(null == user)
@@ -142,15 +143,20 @@ public class EnrollServiceImpl implements EnrollService {
 			throw new ObjectNotFoundException("No User found");
 		}
 		String cardNumber = user.getAccountnumber();
-		if (user.getPswd().equalsIgnoreCase(login.getPwdd())) {
+		try{
+		if (login.getPswd().equalsIgnoreCase(user.getPswd())) {
+
 			loginResponse.setAuthenticated(true);
 			Account account = accountRepo.findByAccountnumber(cardNumber);
 			loginResponse.setCardnumber(cardNumber);
 			loginResponse.setMessage("user authenticated");
 			loginResponse.setUserid(user.getUserid());
 			loginResponse.setCustid(account.getCustid());
+			Customer cust = custRepo.getCustBycustid(account.getCustid());
+			loginResponse.setSsn(cust.getSsn());
 			return loginResponse;
 		}
+		}catch(Exception e){ }
 		return loginResponse;
 	}
 
